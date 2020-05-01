@@ -6,8 +6,9 @@ Small problem-solving or minigames undertaken during the SG coronavirus circuit-
 Wen Liang Goh - [wenlianggg](https://github.com/wenlianggg)
 
 
-## Examples
-* To be updated
+## Contents
+* Matrix RREF Transformation
+* Snake Minigame (Python and C++)
 
 
 ## Disclaimer
