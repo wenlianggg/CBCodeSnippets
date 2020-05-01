@@ -7,7 +7,7 @@ Wen Liang Goh - [wenlianggg](https://github.com/wenlianggg)
 
 
 ### Contents
-* Matrix RREF Transformation
+* Matrix RREF Transformation (Python)
 * Snake Minigame (Python and C++)
 
 
