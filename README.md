@@ -1,15 +1,15 @@
-# Mini Projects CB 
+# Circuit Breaker Mini Projects 
 Small problem-solving or minigames undertaken during the SG coronavirus circuit-breaker period (Apr-May 2020).
 
 
-## Author
+### Author
 Wen Liang Goh - [wenlianggg](https://github.com/wenlianggg)
 
 
-## Contents
+### Contents
 * Matrix RREF Transformation
 * Snake Minigame (Python and C++)
 
 
-## Disclaimer
+### Disclaimer
 Code snippets here may not reflect the most optimal or readable way possible.
