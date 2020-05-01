@@ -1,5 +1,5 @@
-# Circuit Breaker Mini Projects 
-Small problem-solving or minigames undertaken during the SG coronavirus circuit-breaker period (Apr-May 2020).
+# Circuit Breaker Code Snippets
+Created out of boredom during Singapore's Coronavirus Circuit Breaker period (from Apr-Jun 2020).
 
 ### Author
 Wen Liang Goh - [wenlianggg](https://github.com/wenlianggg)
