@@ -1,5 +1,5 @@
-# Description 
-Small projects undertaken during the SG coronavirus circuit-breaker period (Apr-May 2020).
+# Mini Projects CB 
+Small problem-solving or minigames undertaken during the SG coronavirus circuit-breaker period (Apr-May 2020).
 
 
 ## Author
