@@ -7,6 +7,7 @@ Wen Liang Goh - [wenlianggg](https://github.com/wenlianggg)
 
 
 ### Contents
+* Maze solving utility (Python, [NetworkX](https://networkx.github.io/))
 * Matrix RREF Transformation (Python)
 * Snake Minigame (Python and C++)
 
