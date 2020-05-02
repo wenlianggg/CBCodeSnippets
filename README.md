@@ -12,3 +12,6 @@ Wen Liang Goh - [wenlianggg](https://github.com/wenlianggg)
 
 ### Disclaimer
 Code snippets here may not reflect the most optimal or readable way possible.
+
+### License
+This repository is licensed under the MIT License.
