@@ -5,7 +5,7 @@ Created out of boredom during Singapore's Coronavirus Circuit Breaker period (fr
 Wen Liang Goh - [wenlianggg](https://github.com/wenlianggg)
 
 ### Contents
-* Maze solving utility (Python - [NetworkX](https://networkx.github.io/), Matplotlib, Numpy)
+* Maze Solving Utility (Python - [NetworkX](https://networkx.github.io/), Matplotlib, Numpy)
 * Rubiks Cube Mover and 2D Visuals (Python - Matplotlib, Numpy)
 * Matrix RREF Transformation (Python)
 * Snake Minigame (Python and C++)
