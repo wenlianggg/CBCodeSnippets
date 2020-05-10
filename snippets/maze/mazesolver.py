@@ -5,8 +5,15 @@
 # Save maze to mazefile.txt, solves and generates graph in graph.png
 # Using NetworkX for weighted graph searching
 
-import matplotlib.pyplot as plt
 import networkx as nx
+try:  # Try and import optional dependencies
+    import matplotlib.pyplot as plt
+    from matplotlib import colors
+    import numpy as np
+except ImportError:
+    plt = None
+    colors = None
+    np = None
 
 WALL_CHAR = '.'
 SPACE_CHAR = '0'
@@ -93,7 +100,7 @@ for fromX, fromY in intersect_list:
         break
 
     for direction in range(4):
-        for i in range(1, 1000):          
+        for i in range(1, 1000):
             # Set the coordinates to look at
             if direction == 0:
                 x, y = fromX - i, fromY
@@ -114,13 +121,18 @@ for fromX, fromY in intersect_list:
                     break
                 elif maze[y][x] == SPACE_CHAR:
                     continue
-            except:
+            except Exception:
                 print("Error while reading maze", from_index)
                 break
 
 # Find the shortest path
-shortestpath = nx.shortest_path(graph, entry_iidx, exit_iidx)
-print("Shortest path: ", *shortestpath)
+try:
+    shortestpath = nx.shortest_path(graph, entry_iidx, exit_iidx)
+    print("Shortest path: ", *shortestpath)
+except nx.exception.NetworkXNoPath:
+    print("Path not found!")
+    shortestpath = []
+
 
 # Mark out path of the shortest route
 leftpaths, rightpaths, downpaths, uppaths = [[] for i in range(4)]
@@ -135,8 +147,43 @@ for intersect_idx in range(len(shortestpath) - 1):
         elif thisY - destY + i < 0:  # Moving down
             downpaths.append([thisX, thisY + i])
         elif thisY - destY - i > 0:  # Moving up
-            uppaths.append([thisX, thisY -i])
+            uppaths.append([thisX, thisY - i])
 
+
+# Optional dependency check
+if np and plt and colors:
+    plotdata = []
+    for y in range(rows):
+        xarray = []
+        for x in range(cols):
+            if [x, y] in entryexitcoords:
+                xarray.append(20.0)
+            elif any([x, y] in path for path in [leftpaths, rightpaths, downpaths, uppaths]):
+                xarray.append(10.0)
+            elif maze[y][x] == SPACE_CHAR:
+                xarray.append(0.0)
+            elif maze[y][x] == WALL_CHAR:
+                xarray.append(30.0)
+            else:
+                xarray.append(40.0)
+        plotdata.append(xarray)
+    nparray = np.asarray(plotdata)
+
+    cmap = colors.ListedColormap(['white', 'lightgreen', 'blue', 'black'])
+    bounds = [0, 10, 20, 30, 40]
+    norm = colors.BoundaryNorm(bounds, cmap.N)
+    fig, ax = plt.subplots()
+    fig.canvas.set_window_title('Maze Solver')
+    ax.imshow(nparray, cmap=cmap, norm=norm)
+    fig.subplots_adjust(left=0, right=1, bottom=0, top=1)
+    # draw gridlines
+    ax.set_yticklabels([])
+    ax.set_xticklabels([])
+    ax.grid(False)
+    plt.savefig("mazesolved.png", bbox_inches='tight', pad_inches=0, dpi=200)
+    plt.show()
+    nx.draw(graph, with_labels=True)
+    plt.savefig("graph.png")
 
 # Print maze with corners
 for y in range(rows):
@@ -153,10 +200,10 @@ for y in range(rows):
             print('↑ ', end='')
         elif [x, y] in downpaths:
             print('↓ ', end='')
-        #elif [x, y] == entry:
-        #    print('@@', end='')
-        #elif [x, y] == exit:
-        #    print('##', end='')
+        # elif [x, y] == entry:
+        #     print('@@', end='')
+        # elif [x, y] == exit:
+        #     print('##', end='')
         elif maze[y][x] == SPACE_CHAR:
             print('  ', end='')
         elif maze[y][x] == WALL_CHAR:
@@ -164,6 +211,3 @@ for y in range(rows):
         else:
             print('XX', end='')
     print()
-
-nx.draw(graph, with_labels=True)
-plt.savefig("graph.png")
